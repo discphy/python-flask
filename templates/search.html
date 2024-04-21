@@ -6,8 +6,35 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Job Scrapper</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
 </head>
 <body>
-    <h1>Search Results "{{keyword}}" : </h1>
+    <main class="container">
+        <hgroup>
+            <h1>Search Results "{{keyword}}" : </h1>
+            <a href="/export?keyword={{keyword}}" target="_blank">Export to file</a>
+        </hgroup>
+        <figure><table role="grid">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Company</th>
+                    <th>Region</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobs %}
+                <tr>
+                    <td>{{job.title}}</td>
+                    <td>{{job.company}}</td>
+                    <td>{{job.region}}</td>
+                    <td><a href="{{job.link}}" target="_blank">Apply now &rarr;</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table></figure>
+
+    </main>
 </body>
 </html>
